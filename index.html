@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <title>RPS with VueJS</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+  <section class="row">
+    <div class="small-6 columns">
+      <h1 class="text-center">PLAYER</h1>
+      <div class="wins">
+        <div class="wins text-center" style="background-color: green; margin: 0; color: white;" :style="{ width: playerPoint + '0%' }">
+            {{ playerPoint }}
+        </div>
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <h1 class="text-center">COMPUTER</h1>
+      <div class="wins">
+        <div class="wins text-center" style="background-color: green; margin: 0; color: white;" :style="{ width: computerPoint + '1%' }">
+            {{ computerPoint }}
+        </div>
+      </div>ddddddddd
+    </div>
+  </section>
+  <section class="row controls">
+    <div class="small-12 columns">
+      <button id="start-game" @click="startGame">START NEW GAME</button>
+    </div>
+  </section>
+  <section class="row controls" v-show="show">
+    <div class="small-12 columns">
+      <button id="rock" @click="rockChoice">ROCK</button>
+      <button id="paper" @click="paperChoice">PAPER</button>
+      <button id="scissors" @click="scissorsChoice">SCISSORS</button>
+      <button id="restart" @click="restartGame">RESTART</button>
+    </div>
+  </section>
+  <section class="row log" v-show="show">
+    <div class="small-12 columns">
+      <ul>
+        <li v-for="turn in turns" :class="{'player-turn': turn.isPlayer,
+        'computer-turn': !turn.isPlayer, 'tie-turn': turn.tie}">
+          {{ turn.text }}</li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
